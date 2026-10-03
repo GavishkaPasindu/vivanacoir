@@ -34,7 +34,7 @@ export default function MobileNav() {
               <Link href="/quote" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>Get A Quote</Link>
             </nav>
             <div className="mobile-nav-footer">
-              <a href="https://wa.me/94776619006" target="_blank" rel="noopener noreferrer" className="mobile-wa-btn">
+              <a href="https://wa.me/94762520583" target="_blank" rel="noopener noreferrer" className="mobile-wa-btn">
                 Chat on WhatsApp
               </a>
             </div>

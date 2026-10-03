@@ -135,7 +135,7 @@ export default function QuotePage() {
                 <a href="mailto:vivanacoir@gmail.com" style={contactLinkStyle}>
                   ✉️ vivanacoir@gmail.com
                 </a>
-                <a href="https://wa.me/94777123456" target="_blank" rel="noopener noreferrer" style={contactLinkStyle}>
+                <a href="https://wa.me/94762520583" target="_blank" rel="noopener noreferrer" style={contactLinkStyle}>
                   💬 WhatsApp Us
                 </a>
               </div>

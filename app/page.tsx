@@ -340,7 +340,7 @@ export default function Home() {
           <div className="hp-cta-contact-row">
             <a href="mailto:vivanacoir@gmail.com" className="hp-cta-contact-link">✉ vivanacoir@gmail.com</a>
             <span className="hp-cta-separator">·</span>
-            <a href="https://wa.me/94776619006" className="hp-cta-contact-link">💬 WhatsApp Us</a>
+            <a href="https://wa.me/94762520583" className="hp-cta-contact-link">💬 WhatsApp Us</a>
           </div>
         </div>
       </section>

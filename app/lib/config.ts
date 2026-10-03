@@ -14,8 +14,8 @@ export const SHOP_CONFIG = {
 
   // Contact and Address
   address: "Weheragalawaththa, Kahandawa, Ranna, Hambantota District, Sri Lanka",
-  phone: "+94771234567",
-  whatsapp: "+94771234567",
+  phone: "+94 76 252 0583",
+  whatsapp: "+94762520583",
   email: "vivanacoir@gmail.com",
 
   // Invoice Number Settings
