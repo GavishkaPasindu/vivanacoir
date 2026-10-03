@@ -10,8 +10,9 @@ import {
   formatOrderRef,
 } from "@/app/lib/invoiceCounter";
 
+// Try lh3 first, fallback via uc export
 function driveImageUrl(fileId: string): string {
-  return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : "";
+  return fileId ? `https://drive.google.com/uc?export=view&id=${fileId}` : "";
 }
 
 interface FormData {
@@ -54,7 +55,6 @@ export default function CartDrawer() {
   const handleCheckoutSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
       const invoiceNum = getNextInvoiceNumber();
       const invoiceCode = formatInvoiceCode(invoiceNum);
@@ -68,9 +68,10 @@ export default function CartDrawer() {
       const orderItems = cart.map((item) => ({
         id: item.product.id,
         title: item.product.title,
-        price: item.product.discountPrice && item.product.discountPrice > 0
-          ? item.product.discountPrice
-          : item.product.price,
+        price:
+          item.product.discountPrice && item.product.discountPrice > 0
+            ? item.product.discountPrice
+            : item.product.price,
         originalPrice: item.product.price,
         discountPrice: item.product.discountPrice || 0,
         quantity: item.quantity,
@@ -96,14 +97,12 @@ export default function CartDrawer() {
         createdAt: new Date().toLocaleString("en-LK"),
       };
 
-      // Submit order to Google Sheets
       await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderPayload),
       });
 
-      // Send confirmation email
       if (formData.email) {
         await fetch("/api/send-email", {
           method: "POST",
@@ -115,11 +114,11 @@ export default function CartDrawer() {
             phone: formData.phone,
             address: formData.address,
             paymentMethod: formData.paymentMethod,
-            items: orderItems.map((item) => ({
-              title: item.title,
-              size: item.size,
-              quantity: item.quantity,
-              price: item.price,
+            items: orderItems.map((i) => ({
+              title: i.title,
+              size: i.size,
+              quantity: i.quantity,
+              price: i.price,
             })),
             subtotal: cartSubtotal,
             shipping,
@@ -129,7 +128,6 @@ export default function CartDrawer() {
         });
       }
 
-      // Build success page data and redirect
       const successData = {
         orderId,
         invoiceCode,
@@ -159,6 +157,11 @@ export default function CartDrawer() {
     }
   };
 
+  // ─── CSS vars shorthand (matches globals.css tokens) ──────────────────────
+  const P = "var(--color-primary)";       // #000B4D navy
+  const A = "var(--color-accent)";        // #3B82F6 blue
+  const PD = "var(--color-primary-dark)"; // #000529
+
   return (
     <>
       {/* Backdrop */}
@@ -166,194 +169,161 @@ export default function CartDrawer() {
         <div
           onClick={() => setIsCartOpen(false)}
           style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.5)",
-            zIndex: 1000,
-            backdropFilter: "blur(2px)",
+            position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)",
+            zIndex: 1000, backdropFilter: "blur(2px)",
           }}
         />
       )}
 
       {/* Drawer */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          right: 0,
-          width: "min(420px, 100vw)",
-          height: "100vh",
-          background: "#fff",
-          zIndex: 1001,
-          transform: isCartOpen ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-          display: "flex",
-          flexDirection: "column",
-          boxShadow: "-8px 0 32px rgba(0,0,0,0.15)",
-        }}
-      >
+      <div style={{
+        position: "fixed", top: 0, right: 0,
+        width: "min(420px, 100vw)", height: "100vh",
+        background: "#fff", zIndex: 1001,
+        transform: isCartOpen ? "translateX(0)" : "translateX(100%)",
+        transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+        display: "flex", flexDirection: "column",
+        boxShadow: "-8px 0 40px rgba(0,0,0,0.18)",
+        fontFamily: "var(--font-body)",
+      }}>
+
         {/* Header */}
-        <div
-          style={{
-            background: "#1a5c2f",
-            color: "#fff",
-            padding: "1.25rem 1.5rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderBottom: "3px solid #4caf50",
-            flexShrink: 0,
-          }}
-        >
+        <div style={{
+          background: P, color: "#fff",
+          padding: "1.25rem 1.5rem",
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          borderBottom: `3px solid ${A}`, flexShrink: 0,
+        }}>
           <div>
-            <h2 style={{ margin: 0, fontSize: "1rem", fontWeight: 700, letterSpacing: "0.05em" }}>
-              YOUR CART
+            <h2 style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-body)" }}>
+              Your Cart
             </h2>
-            <p style={{ margin: "2px 0 0", fontSize: "0.75rem", color: "#a5d6a7" }}>
+            <p style={{ margin: "2px 0 0", fontSize: "0.75rem", color: "#93c5fd" }}>
               {cartCount} {cartCount === 1 ? "item" : "items"}
             </p>
           </div>
           <button
             onClick={() => setIsCartOpen(false)}
             style={{
-              background: "rgba(255,255,255,0.15)",
-              border: "none",
-              color: "#fff",
-              width: 36,
-              height: 36,
-              borderRadius: "50%",
-              cursor: "pointer",
-              fontSize: "1.2rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              background: "rgba(255,255,255,0.15)", border: "none",
+              color: "#fff", width: 34, height: 34, cursor: "pointer",
+              fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center",
             }}
           >
             ✕
           </button>
         </div>
 
-        {/* Shipping Progress */}
+        {/* Shipping progress */}
         {!hasOnlyWholesale && cart.length > 0 && shippingRemaining > 0 && (
-          <div style={{ padding: "0.75rem 1.5rem", background: "#f1f8f4", borderBottom: "1px solid #d4edda", flexShrink: 0 }}>
-            <p style={{ margin: 0, fontSize: "0.8rem", color: "#2e7d32" }}>
-              Add Rs. {shippingRemaining.toLocaleString("en-LK")} more for FREE shipping!
+          <div style={{ padding: "0.7rem 1.5rem", background: "#eff6ff", borderBottom: "1px solid #bfdbfe", flexShrink: 0 }}>
+            <p style={{ margin: "0 0 5px", fontSize: "0.78rem", color: "#1d4ed8", fontWeight: 600 }}>
+              Add Rs. {shippingRemaining.toLocaleString("en-LK")} more for FREE shipping
             </p>
-            <div style={{ height: 4, background: "#d4edda", borderRadius: 2, marginTop: 6 }}>
-              <div
-                style={{
-                  height: "100%",
-                  background: "#4caf50",
-                  borderRadius: 2,
-                  width: `${Math.min((cartSubtotal / SHIPPING_THRESHOLD) * 100, 100)}%`,
-                  transition: "width 0.3s ease",
-                }}
-              />
+            <div style={{ height: 4, background: "#bfdbfe", borderRadius: 0 }}>
+              <div style={{
+                height: "100%", background: A, borderRadius: 0,
+                width: `${Math.min((cartSubtotal / SHIPPING_THRESHOLD) * 100, 100)}%`,
+                transition: "width 0.3s",
+              }} />
             </div>
           </div>
         )}
 
-        {/* Cart Items */}
+        {/* Items */}
         <div style={{ flex: 1, overflowY: "auto", padding: "1rem 1.5rem" }}>
           {cart.length === 0 ? (
             <div style={{ textAlign: "center", padding: "3rem 0", color: "#888" }}>
               <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🛒</div>
-              <p style={{ margin: 0, fontWeight: 600 }}>Your cart is empty</p>
-              <p style={{ margin: "0.5rem 0 0", fontSize: "0.85rem" }}>Add products to get started</p>
+              <p style={{ fontWeight: 600, margin: 0 }}>Your cart is empty</p>
+              <p style={{ fontSize: "0.82rem", margin: "0.4rem 0 0", color: "#aaa" }}>Browse products and add items</p>
             </div>
           ) : (
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.875rem" }}>
               {cart.map((item) => {
                 const price =
                   item.product.discountPrice && item.product.discountPrice > 0
                     ? item.product.discountPrice
                     : item.product.price;
-
                 return (
-                  <li
-                    key={`${item.product.id}-${item.selectedSize}`}
-                    style={{
-                      display: "flex",
-                      gap: "0.75rem",
-                      padding: "0.75rem",
-                      background: "#f9fafb",
-                      borderRadius: 8,
-                      border: "1px solid #e5e7eb",
-                    }}
-                  >
-                    {/* Product Image */}
-                    <div style={{ width: 64, height: 72, flexShrink: 0, borderRadius: 6, overflow: "hidden", background: "#e8f5e9" }}>
+                  <li key={`${item.product.id}-${item.selectedSize}`} style={{
+                    display: "flex", gap: "0.75rem",
+                    padding: "0.75rem", background: "#f8fafc",
+                    border: "1px solid #e2e8f0",
+                  }}>
+                    {/* Image */}
+                    <div style={{ width: 64, height: 64, flexShrink: 0, overflow: "hidden", background: "#e2e8f0" }}>
                       {item.product.imageId ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={driveImageUrl(item.product.imageId)}
                           alt={item.product.title}
                           style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                          onError={(e) => {
+                            const el = e.target as HTMLImageElement;
+                            el.style.display = "none";
+                            el.parentElement!.style.display = "flex";
+                            el.parentElement!.style.alignItems = "center";
+                            el.parentElement!.style.justifyContent = "center";
+                            el.parentElement!.style.color = P;
+                            el.parentElement!.style.fontWeight = "700";
+                            el.parentElement!.style.fontSize = "1.25rem";
+                            el.parentElement!.innerText = item.product.category?.charAt(0) || "C";
+                          }}
                         />
                       ) : (
-                        <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "#4caf50", fontWeight: 700, fontSize: "1.2rem" }}>
-                          {item.product.category?.charAt(0) || "P"}
+                        <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: P, fontWeight: 700, fontSize: "1.25rem" }}>
+                          {item.product.category?.charAt(0) || "C"}
                         </div>
                       )}
                     </div>
 
-                    {/* Product Info */}
+                    {/* Info */}
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <p style={{ margin: 0, fontWeight: 600, fontSize: "0.85rem", color: "#111", lineHeight: 1.3 }}>
+                      <p style={{ margin: 0, fontWeight: 600, fontSize: "0.84rem", color: "#0f172a", lineHeight: 1.3 }}>
                         {item.product.title}
                       </p>
-                      {item.selectedSize && (
-                        <p style={{ margin: "2px 0", fontSize: "0.75rem", color: "#666" }}>Size: {item.selectedSize}</p>
-                      )}
-                      <p style={{ margin: "2px 0", fontSize: "0.75rem", color: "#1a5c2f", fontWeight: 600 }}>
+                      <p style={{ margin: "2px 0", fontSize: "0.7rem", color: A, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
                         {item.product.category}
                       </p>
 
-                      {/* Quantity Controls */}
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem" }}>
-                        <button
-                          onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.selectedSize)}
-                          disabled={item.quantity <= 1}
-                          style={{
-                            width: 24, height: 24, borderRadius: 4, border: "1px solid #d1d5db",
-                            background: "#fff", cursor: "pointer", fontSize: "0.9rem", display: "flex",
-                            alignItems: "center", justifyContent: "center",
-                          }}
-                        >
-                          -
-                        </button>
-                        <span style={{ fontSize: "0.85rem", fontWeight: 600, minWidth: 20, textAlign: "center" }}>
+                      {/* Qty + Remove */}
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.4rem" }}>
+                        {[
+                          { label: "−", action: () => updateQuantity(item.product.id, item.quantity - 1, item.selectedSize), disabled: item.quantity <= 1 },
+                          { label: "+", action: () => updateQuantity(item.product.id, item.quantity + 1, item.selectedSize), disabled: item.quantity >= 99 },
+                        ].map((btn, i) => (
+                          <button
+                            key={i}
+                            onClick={btn.action}
+                            disabled={btn.disabled}
+                            style={{
+                              width: 24, height: 24, border: `1px solid #cbd5e1`,
+                              background: "#fff", cursor: btn.disabled ? "default" : "pointer",
+                              fontSize: "0.9rem", display: "flex", alignItems: "center", justifyContent: "center",
+                              opacity: btn.disabled ? 0.4 : 1,
+                            }}
+                          >
+                            {i === 0 ? "−" : "+"}
+                          </button>
+                        ))}
+                        <span style={{ fontSize: "0.84rem", fontWeight: 700, minWidth: 20, textAlign: "center" }}>
                           {item.quantity}
                         </span>
                         <button
-                          onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.selectedSize)}
-                          disabled={item.quantity >= 99}
-                          style={{
-                            width: 24, height: 24, borderRadius: 4, border: "1px solid #d1d5db",
-                            background: "#fff", cursor: "pointer", fontSize: "0.9rem", display: "flex",
-                            alignItems: "center", justifyContent: "center",
-                          }}
-                        >
-                          +
-                        </button>
-                        <button
                           onClick={() => removeFromCart(item.product.id, item.selectedSize)}
-                          style={{
-                            marginLeft: "auto", background: "none", border: "none",
-                            color: "#ef4444", cursor: "pointer", fontSize: "0.8rem",
-                          }}
+                          style={{ marginLeft: "auto", background: "none", border: "none", color: "#ef4444", cursor: "pointer", fontSize: "0.75rem", fontWeight: 600 }}
                         >
                           Remove
                         </button>
                       </div>
 
                       {/* Price */}
-                      <div style={{ marginTop: "0.4rem" }}>
+                      <div style={{ marginTop: "0.35rem" }}>
                         {item.product.isWholesale ? (
-                          <span style={{ fontSize: "0.8rem", color: "#92400e", fontWeight: 600 }}>Price on Request</span>
+                          <span style={{ fontSize: "0.78rem", color: "#92400e", fontWeight: 700 }}>Price on Request</span>
                         ) : (
-                          <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "#1a5c2f" }}>
+                          <span style={{ fontSize: "0.88rem", fontWeight: 800, color: P }}>
                             Rs. {(price * item.quantity).toLocaleString("en-LK")}.00
                           </span>
                         )}
@@ -366,33 +336,28 @@ export default function CartDrawer() {
           )}
         </div>
 
-        {/* Footer */}
+        {/* Footer totals + CTA */}
         {cart.length > 0 && (
-          <div style={{ padding: "1rem 1.5rem", borderTop: "1px solid #e5e7eb", flexShrink: 0, background: "#fff" }}>
-            {hasOnlyWholesale ? (
-              <div style={{ padding: "0.75rem 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span style={{ fontSize: "0.9rem", fontWeight: 600 }}>Wholesale Inquiry</span>
-                <span style={{ color: "#92400e", fontWeight: 700 }}>Price on Request</span>
-              </div>
-            ) : (
+          <div style={{ padding: "1rem 1.5rem", borderTop: "1px solid #e2e8f0", flexShrink: 0, background: "#fff" }}>
+            {!hasOnlyWholesale && (
               <>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem", fontSize: "0.9rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem", marginBottom: "0.4rem", color: "#475569" }}>
                   <span>Subtotal</span>
                   <span>Rs. {cartSubtotal.toLocaleString("en-LK")}.00</span>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem", fontSize: "0.9rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem", marginBottom: "0.4rem", color: "#475569" }}>
                   <span>Shipping</span>
-                  <span style={{ color: shippingRemaining <= 0 ? "#2e7d32" : "#111", fontWeight: shippingRemaining <= 0 ? 700 : 400 }}>
+                  <span style={{ color: shippingRemaining <= 0 ? "#16a34a" : "#475569", fontWeight: shippingRemaining <= 0 ? 700 : 400 }}>
                     {shippingRemaining <= 0 ? "FREE" : `Rs. ${SHIPPING_COST}.00`}
                   </span>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 700, fontSize: "1rem", padding: "0.5rem 0", borderTop: "1px solid #e5e7eb" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800, fontSize: "1rem", padding: "0.6rem 0", borderTop: "1px solid #e2e8f0", color: P }}>
                   <span>Total Estimate</span>
                   <span>Rs. {(cartSubtotal + (shippingRemaining <= 0 ? 0 : SHIPPING_COST)).toLocaleString("en-LK")}.00</span>
                 </div>
                 {hasWholesale && (
-                  <p style={{ fontSize: "0.75rem", color: "#92400e", margin: "0.5rem 0 0", textAlign: "center" }}>
-                    * Wholesale items excluded from estimate.
+                  <p style={{ fontSize: "0.72rem", color: "#92400e", margin: "0.25rem 0 0", textAlign: "center" }}>
+                    * Wholesale items excluded from estimate
                   </p>
                 )}
               </>
@@ -401,37 +366,26 @@ export default function CartDrawer() {
             <button
               onClick={() => setCheckoutOpen(true)}
               style={{
-                width: "100%",
-                padding: "0.9rem",
-                marginTop: "0.75rem",
-                background: "#1a5c2f",
-                color: "#fff",
-                border: "none",
-                borderRadius: 8,
-                fontWeight: 700,
-                fontSize: "0.95rem",
-                cursor: "pointer",
-                letterSpacing: "0.05em",
+                width: "100%", padding: "0.875rem", marginTop: "0.75rem",
+                background: P, color: "#fff", border: "none",
+                fontWeight: 700, fontSize: "0.875rem", cursor: "pointer",
+                textTransform: "uppercase", letterSpacing: "0.06em",
+                fontFamily: "var(--font-body)",
                 transition: "background 0.2s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#145024")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#1a5c2f")}
+              onMouseEnter={(e) => (e.currentTarget.style.background = PD)}
+              onMouseLeave={(e) => (e.currentTarget.style.background = P)}
             >
-              SUBMIT INQUIRY
+              Submit Inquiry
             </button>
             <button
               onClick={() => setIsCartOpen(false)}
               style={{
-                width: "100%",
-                padding: "0.7rem",
-                marginTop: "0.5rem",
-                background: "transparent",
-                color: "#1a5c2f",
-                border: "1px solid #1a5c2f",
-                borderRadius: 8,
-                fontWeight: 600,
-                fontSize: "0.85rem",
-                cursor: "pointer",
+                width: "100%", padding: "0.65rem", marginTop: "0.5rem",
+                background: "transparent", color: P,
+                border: `1px solid ${P}`,
+                fontWeight: 600, fontSize: "0.82rem", cursor: "pointer",
+                fontFamily: "var(--font-body)",
               }}
             >
               Continue Shopping
@@ -440,131 +394,104 @@ export default function CartDrawer() {
         )}
       </div>
 
-      {/* Checkout Modal */}
+      {/* ─── Checkout Modal ────────────────────────────────────────────────── */}
       {checkoutOpen && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.6)",
-            zIndex: 2000,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "1rem",
-          }}
-        >
+        <div style={{
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)",
+          zIndex: 2000, display: "flex", alignItems: "center", justifyContent: "center",
+          padding: "1rem",
+        }}>
           <div
-            style={{
-              background: "#fff",
-              borderRadius: 12,
-              padding: "2rem",
-              width: "100%",
-              maxWidth: 480,
-              maxHeight: "90vh",
-              overflowY: "auto",
-              position: "relative",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-            }}
             onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#fff", width: "100%", maxWidth: 480,
+              maxHeight: "90vh", overflowY: "auto",
+              position: "relative", padding: "2rem",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+              fontFamily: "var(--font-body)",
+            }}
           >
+            {/* Close */}
             <button
               onClick={() => setCheckoutOpen(false)}
               style={{
-                position: "absolute",
-                top: "1rem",
-                right: "1rem",
-                background: "#f3f4f6",
-                border: "none",
-                width: 32,
-                height: 32,
-                borderRadius: "50%",
-                cursor: "pointer",
-                fontSize: "1rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                position: "absolute", top: "1rem", right: "1rem",
+                background: "#f1f5f9", border: "none", width: 30, height: 30,
+                cursor: "pointer", fontSize: "0.9rem",
+                display: "flex", alignItems: "center", justifyContent: "center",
               }}
-            >
-              ✕
-            </button>
+            >✕</button>
 
             <form onSubmit={handleCheckoutSubmit}>
-              <h3 style={{ margin: "0 0 0.5rem", fontSize: "1.25rem", color: "#1a5c2f" }}>
-                Submit Inquiry
-              </h3>
-              <p style={{ margin: "0 0 1.5rem", fontSize: "0.85rem", color: "#666" }}>
-                Leave your details and our team will contact you via Email and WhatsApp to arrange payment and delivery.
-              </p>
+              {/* Title */}
+              <div style={{ borderBottom: `3px solid ${A}`, paddingBottom: "1rem", marginBottom: "1.5rem" }}>
+                <h3 style={{ margin: 0, fontSize: "1.2rem", color: P, fontFamily: "var(--font-heading)", fontWeight: 700 }}>
+                  Submit Inquiry
+                </h3>
+                <p style={{ margin: "0.35rem 0 0", fontSize: "0.82rem", color: "#475569" }}>
+                  Our team will confirm stock and arrange delivery via Email or WhatsApp.
+                </p>
+              </div>
 
-              {[
-                { label: "Full Name *", id: "name", type: "text", placeholder: "Enter your full name", field: "name" as const },
-                { label: "Phone Number *", id: "phone", type: "tel", placeholder: "e.g. +94 77 123 4567", field: "phone" as const },
-                { label: "Email Address *", id: "email", type: "email", placeholder: "e.g. customer@example.com", field: "email" as const },
-              ].map(({ label, id, type, placeholder, field }) => (
+              {/* Fields */}
+              {([
+                { label: "Full Name *", id: "name", type: "text", placeholder: "Enter your full name", field: "name" },
+                { label: "Phone Number *", id: "phone", type: "tel", placeholder: "e.g. +94 77 123 4567", field: "phone" },
+                { label: "Email Address *", id: "email", type: "email", placeholder: "e.g. customer@example.com", field: "email" },
+              ] as { label: string; id: string; type: string; placeholder: string; field: keyof FormData }[]).map(({ label, id, type, placeholder, field }) => (
                 <div key={id} style={{ marginBottom: "1rem" }}>
-                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
+                  <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, marginBottom: "0.35rem", color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     {label}
                   </label>
                   <input
-                    type={type}
-                    id={id}
-                    required
+                    type={type} id={id} required
                     value={formData[field]}
                     onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
                     placeholder={placeholder}
                     style={{
-                      width: "100%",
-                      padding: "0.65rem 0.875rem",
-                      border: "1px solid #d1d5db",
-                      borderRadius: 8,
-                      fontSize: "0.9rem",
-                      outline: "none",
+                      width: "100%", padding: "0.65rem 0.875rem",
+                      border: "1px solid #cbd5e1", fontSize: "0.875rem",
+                      outline: "none", fontFamily: "var(--font-body)",
                       boxSizing: "border-box",
+                      transition: "border-color 0.2s",
                     }}
+                    onFocus={(e) => (e.target.style.borderColor = A)}
+                    onBlur={(e) => (e.target.style.borderColor = "#cbd5e1")}
                   />
                 </div>
               ))}
 
               <div style={{ marginBottom: "1rem" }}>
-                <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, marginBottom: "0.35rem", color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   Delivery Address *
                 </label>
                 <textarea
-                  id="address"
-                  required
-                  rows={3}
+                  id="address" required rows={3}
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   placeholder="Enter full delivery address"
                   style={{
-                    width: "100%",
-                    padding: "0.65rem 0.875rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: 8,
-                    fontSize: "0.9rem",
-                    resize: "vertical",
-                    outline: "none",
-                    boxSizing: "border-box",
+                    width: "100%", padding: "0.65rem 0.875rem",
+                    border: "1px solid #cbd5e1", fontSize: "0.875rem",
+                    resize: "vertical", outline: "none",
+                    fontFamily: "var(--font-body)", boxSizing: "border-box",
                   }}
+                  onFocus={(e) => (e.target.style.borderColor = A)}
+                  onBlur={(e) => (e.target.style.borderColor = "#cbd5e1")}
                 />
               </div>
 
               <div style={{ marginBottom: "1.5rem" }}>
-                <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem", color: "#374151" }}>
+                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 700, marginBottom: "0.35rem", color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   Payment Method
                 </label>
                 <select
                   value={formData.paymentMethod}
                   onChange={(e) => setFormData({ ...formData, paymentMethod: e.target.value })}
                   style={{
-                    width: "100%",
-                    padding: "0.65rem 0.875rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: 8,
-                    fontSize: "0.9rem",
-                    background: "#fff",
-                    outline: "none",
+                    width: "100%", padding: "0.65rem 0.875rem",
+                    border: "1px solid #cbd5e1", fontSize: "0.875rem",
+                    background: "#fff", outline: "none", fontFamily: "var(--font-body)",
                   }}
                 >
                   <option>Cash on Delivery (COD)</option>
@@ -573,23 +500,16 @@ export default function CartDrawer() {
                 </select>
               </div>
 
-              {/* Total */}
-              <div
-                style={{
-                  background: "#f1f8f4",
-                  border: "1px solid #d4edda",
-                  borderRadius: 8,
-                  padding: "0.875rem 1rem",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                <span style={{ fontSize: "0.9rem", fontWeight: 600 }}>
-                  {hasOnlyWholesale ? "Wholesale Total:" : "Total Amount Due:"}
+              {/* Total box */}
+              <div style={{
+                background: "#eff6ff", border: `1px solid #bfdbfe`,
+                padding: "0.875rem 1rem", marginBottom: "1.25rem",
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+              }}>
+                <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "#1e40af" }}>
+                  {hasOnlyWholesale ? "Wholesale Total:" : "Estimated Total:"}
                 </span>
-                <strong style={{ color: "#1a5c2f", fontSize: "1rem" }}>
+                <strong style={{ color: P, fontSize: "1rem" }}>
                   {hasOnlyWholesale
                     ? "Price on Request"
                     : `Rs. ${(cartSubtotal + (shippingRemaining <= 0 ? 0 : SHIPPING_COST)).toLocaleString("en-LK")}.00`}
@@ -600,46 +520,30 @@ export default function CartDrawer() {
                 type="submit"
                 disabled={isSubmitting}
                 style={{
-                  width: "100%",
-                  padding: "0.9rem",
-                  background: isSubmitting ? "#9ca3af" : "#1a5c2f",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 8,
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  cursor: isSubmitting ? "not-allowed" : "pointer",
-                  letterSpacing: "0.05em",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.5rem",
+                  width: "100%", padding: "0.9rem",
+                  background: isSubmitting ? "#94a3b8" : P,
+                  color: "#fff", border: "none",
+                  fontWeight: 700, fontSize: "0.875rem", cursor: isSubmitting ? "not-allowed" : "pointer",
+                  textTransform: "uppercase", letterSpacing: "0.06em",
+                  fontFamily: "var(--font-body)",
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
                 }}
               >
                 {isSubmitting && (
-                  <span
-                    style={{
-                      width: 18,
-                      height: 18,
-                      border: "2px solid rgba(255,255,255,0.3)",
-                      borderTopColor: "#fff",
-                      borderRadius: "50%",
-                      animation: "spin 0.6s linear infinite",
-                    }}
-                  />
+                  <span style={{
+                    width: 16, height: 16, border: "2px solid rgba(255,255,255,0.3)",
+                    borderTopColor: "#fff", borderRadius: "50%",
+                    animation: "cart-spin 0.6s linear infinite", display: "inline-block",
+                  }} />
                 )}
-                {isSubmitting ? "SUBMITTING..." : "SUBMIT INQUIRY"}
+                {isSubmitting ? "Submitting…" : "Submit Inquiry"}
               </button>
             </form>
           </div>
         </div>
       )}
 
-      <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
+      <style>{`@keyframes cart-spin { to { transform: rotate(360deg); } }`}</style>
     </>
   );
 }
