@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Products() {
@@ -11,6 +11,27 @@ export default function Products() {
           <p className="about-text" style={{ maxWidth: '700px', margin: '0 auto' }}>
             From robust mattress fibres to high-grade horticultural substrates, explore our diverse catalog of natural coconut products tailored for global export.
           </p>
+          <div style={{ marginTop: '2rem' }}>
+            <Link
+              href="/shop"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.875rem 2rem',
+                background: 'var(--color-primary)',
+                color: '#fff',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: 700,
+                fontSize: '0.95rem',
+                letterSpacing: '0.04em',
+                transition: 'opacity 0.2s',
+              }}
+            >
+              <ShoppingBag size={18} /> Shop Online Now
+            </Link>
+          </div>
         </div>
       </div>
 

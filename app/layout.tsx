@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Leaf, MapPin, Mail, Phone, ChevronRight } from 'lucide-react';
+import { MapPin, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { CartProvider } from './context/CartContext';
 
 export const metadata: Metadata = {
   title: 'VIVANA COIR PRODUCTS EXPORT | Sri Lanka',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <CartProvider>
         <nav className="navbar">
           <div className="container nav-container">
             <Link href="/" className="logo">
@@ -25,6 +27,7 @@ export default function RootLayout({
               <Link href="/" className="nav-link">Home</Link>
               <Link href="/#about" className="nav-link">About Us</Link>
               <Link href="/products" className="nav-link">Products</Link>
+              <Link href="/shop" className="nav-link">Shop Online</Link>
               <Link href="/#contact" className="nav-link">Contact</Link>
               <Link href="/#quote" className="nav-cta">Get A Quote</Link>
             </div>
@@ -87,6 +90,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        </CartProvider>
       </body>
     </html>
   );
