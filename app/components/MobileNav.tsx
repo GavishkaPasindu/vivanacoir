@@ -26,16 +26,16 @@ export default function MobileNav() {
               <button className="mobile-nav-close" onClick={() => setOpen(false)}>✕</button>
             </div>
             <nav className="mobile-nav-links">
-              <Link href="/" className="mobile-nav-link" onClick={() => setOpen(false)}>🏠 Home</Link>
-              <Link href="/about" className="mobile-nav-link" onClick={() => setOpen(false)}>🏭 About Us</Link>
-              <Link href="/products" className="mobile-nav-link" onClick={() => setOpen(false)}>📦 Products</Link>
-              <Link href="/shop" className="mobile-nav-link" onClick={() => setOpen(false)}>🛒 Shop Online</Link>
-              <Link href="/contact" className="mobile-nav-link" onClick={() => setOpen(false)}>📞 Contact</Link>
-              <Link href="/quote" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>✉️ Get A Quote</Link>
+              <Link href="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</Link>
+              <Link href="/about" className="mobile-nav-link" onClick={() => setOpen(false)}>About Us</Link>
+              <Link href="/products" className="mobile-nav-link" onClick={() => setOpen(false)}>Products</Link>
+              <Link href="/shop" className="mobile-nav-link" onClick={() => setOpen(false)}>Shop Online</Link>
+              <Link href="/contact" className="mobile-nav-link" onClick={() => setOpen(false)}>Contact</Link>
+              <Link href="/quote" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>Get A Quote</Link>
             </nav>
             <div className="mobile-nav-footer">
               <a href="https://wa.me/94776619006" target="_blank" rel="noopener noreferrer" className="mobile-wa-btn">
-                💬 Chat on WhatsApp
+                Chat on WhatsApp
               </a>
             </div>
           </div>

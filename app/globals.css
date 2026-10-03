@@ -813,7 +813,9 @@ img {
   .products-grid { grid-template-columns: 1fr; }
 
   /* Shop filters */
-  .shop-filter-bar { flex-direction: column; align-items: stretch; }
+  .shop-filter-bar { flex-direction: column; align-items: stretch; gap: 1.25rem; padding: 1rem; }
+  .shop-filter-group { flex-wrap: wrap; gap: 0.5rem; }
+  .shop-filter-label { width: 100%; margin-bottom: 0.25rem; }
   .shop-products-grid { grid-template-columns: repeat(2, 1fr) !important; }
 
   /* Invoice responsive */

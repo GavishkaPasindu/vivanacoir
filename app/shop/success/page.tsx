@@ -93,47 +93,47 @@ function SuccessContent() {
 
           {/* Invoice Header */}
           <div style={{
-            background: "var(--color-primary)",
-            color: "#fff", padding: "1.5rem 2rem",
+            background: "#fff",
+            color: "var(--color-primary)", padding: "1.5rem 2rem",
             borderBottom: "3px solid var(--color-accent)",
             display: "flex", justifyContent: "space-between",
-            flexWrap: "wrap", gap: "1rem",
+            flexDirection: "row", flexWrap: "wrap", gap: "1rem",
           }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: "1 1 300px" }}>
               {/* Logo on invoice */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/logo.png"
                 alt="VIVANA HOLDINGS"
-                style={{ height: "52px", width: "auto", filter: "brightness(0) invert(1)" }}
+                style={{ height: "48px", width: "auto" }}
               />
               <div>
-                <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em" }}>
+                <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em", color: "var(--color-primary)" }}>
                   VIVANA HOLDINGS
                 </h2>
-                <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#93c5fd" }}>
+                <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
                   PRODUCTS EXPORT (PVT) LTD
                 </p>
-                <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>
+                <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "var(--color-text-muted)" }}>
                   {SHOP_CONFIG.address}
                 </p>
-                <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>
+                <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "var(--color-text-muted)" }}>
                   {SHOP_CONFIG.email}
                 </p>
               </div>
             </div>
-            <div style={{ textAlign: "right" }}>
-              <p style={{ margin: 0, fontSize: "0.75rem", color: "#93c5fd", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 700 }}>
+            <div style={{ textAlign: "right", flex: "1 1 200px" }}>
+              <p style={{ margin: 0, fontSize: "0.75rem", color: "var(--color-primary)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 700 }}>
                 ORDER RECEIPT
               </p>
-              <p style={{ margin: "4px 0 0", fontSize: "0.82rem" }}>
+              <p style={{ margin: "4px 0 0", fontSize: "0.82rem", color: "var(--color-text)" }}>
                 <strong>Receipt:</strong>{" "}
                 {order.invoiceCode ? formatReceiptCode(order.invoiceCode) : order.orderId}
               </p>
-              <p style={{ margin: "2px 0 0", fontSize: "0.82rem" }}>
+              <p style={{ margin: "2px 0 0", fontSize: "0.82rem", color: "var(--color-text)" }}>
                 <strong>Order Ref:</strong> {order.orderId}
               </p>
-              <p style={{ margin: "2px 0 0", fontSize: "0.82rem" }}>
+              <p style={{ margin: "2px 0 0", fontSize: "0.82rem", color: "var(--color-text)" }}>
                 <strong>Date:</strong> {order.createdAt.split(",")[0]}
               </p>
             </div>
