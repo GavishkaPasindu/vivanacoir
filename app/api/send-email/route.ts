@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
                 <!-- Brand Header -->
                 <tr>
                   <td align="center" style="background-color: #1a5c2f; padding: 30px 20px; border-bottom: 3px solid #4caf50;">
-                    <h1 style="margin: 0; font-family: Georgia, serif; font-size: 26px; color: #ffffff; letter-spacing: 3px; text-transform: uppercase;">VIVANA COIR</h1>
+                    <h1 style="margin: 0; font-family: Georgia, serif; font-size: 26px; color: #ffffff; letter-spacing: 3px; text-transform: uppercase;">VIVANA HOLDINGS</h1>
                     <p style="margin: 5px 0 0 0; font-size: 12px; color: #a5d6a7; text-transform: uppercase; letter-spacing: 2px;">Premium Coir Products Export – Sri Lanka</p>
                   </td>
                 </tr>

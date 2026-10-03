@@ -101,7 +101,7 @@ function SuccessContent() {
           }}>
             <div>
               <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em" }}>
-                VIVANA COIR
+                VIVANA HOLDINGS
               </h2>
               <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#93c5fd" }}>
                 PRODUCTS EXPORT (PVT) LTD

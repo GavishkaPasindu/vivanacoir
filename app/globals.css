@@ -140,11 +140,19 @@ img {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0; /* Remove gap since image has built-in padding */
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary-dark);
+}
+
+.logo-img {
+  height: 42px;
+  width: auto;
+  margin-right: 0.2rem;
+  margin-left: 0;
+  transform: translateY(-2px); /* Visually center with text */
 }
 
 .nav-links {
@@ -526,6 +534,10 @@ img {
   .nav-links { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
   .feature-list { grid-template-columns: 1fr; }
+  
+  /* Make logo text smaller and image smaller on mobile so it fits */
+  .logo { font-size: 1.15rem; }
+  .logo-img { height: 36px !important; margin-right: 0.1rem; margin-left: 0; transform: translateY(-1px); }
 }
 
 /* ═══════════════════════════════════════════════════

@@ -21,7 +21,8 @@ export default function RootLayout({
         <nav className="navbar">
           <div className="container nav-container">
             <Link href="/" className="logo">
-              <img src="/logo.png" alt="VIVANA HOLDINGS" style={{ height: '50px', width: 'auto' }} />
+              <img src="/logo.png" alt="VIVANA HOLDINGS" className="logo-img" />
+              <span className="logo-text">VIVANA HOLDINGS</span>
             </Link>
             <div className="nav-links">
               <Link href="/" className="nav-link">Home</Link>
@@ -29,7 +30,7 @@ export default function RootLayout({
               <Link href="/products" className="nav-link">Products</Link>
               <Link href="/shop" className="nav-link">Shop Online</Link>
               <Link href="/#contact" className="nav-link">Contact</Link>
-              <Link href="/#quote" className="nav-cta">Get A Quote</Link>
+              <Link href="/quote" className="nav-cta">Get A Quote</Link>
             </div>
           </div>
         </nav>

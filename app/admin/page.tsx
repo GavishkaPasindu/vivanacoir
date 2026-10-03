@@ -238,7 +238,7 @@ export default function AdminPage() {
           <span style={{ fontSize: "1.25rem" }}>🌿</span>
           <div>
             <p style={{ margin: 0, fontWeight: 800, fontSize: "0.95rem", letterSpacing: "0.04em", fontFamily: "Playfair Display, serif" }}>
-              VIVANA COIR
+              VIVANA HOLDINGS
             </p>
             <p style={{ margin: 0, fontSize: "0.68rem", color: "#93c5fd" }}>Admin Dashboard</p>
           </div>
