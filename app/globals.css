@@ -1200,12 +1200,12 @@ img {
   }
   
   /* Hide navbar, footer, and other UI elements */
-  nav, footer, .shop-cart-fab, .btn-primary, button {
+  nav, footer, .shop-cart-fab, .btn-primary, button, .hide-on-print {
     display: none !important;
   }
   
   /* Reset layout wrappers to prevent extra pages */
-  main, .container, .section {
+  main, .container, .section, .print-wrapper, .print-container {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;

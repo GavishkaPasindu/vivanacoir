@@ -59,11 +59,11 @@ function SuccessContent() {
   }
 
   return (
-    <div style={{ paddingTop: "80px", background: "var(--color-bg-alt)", minHeight: "100vh" }}>
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "3rem 1rem 4rem" }}>
+    <div className="print-wrapper" style={{ paddingTop: "80px", background: "var(--color-bg-alt)", minHeight: "100vh" }}>
+      <div className="print-container" style={{ maxWidth: 800, margin: "0 auto", padding: "3rem 1rem 4rem" }}>
 
         {/* ── Success Banner ──────────────────────────────────────────── */}
-        <div style={{
+        <div className="hide-on-print" style={{
           background: "#fff",
           borderTop: "4px solid var(--color-accent)",
           padding: "2rem", textAlign: "center",
