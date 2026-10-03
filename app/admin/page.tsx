@@ -492,17 +492,32 @@ export default function AdminPage() {
 
             <div className="printable-doc">
               {/* Header */}
-              <div style={{ background: P, color: "#fff", padding: "1.5rem 2rem", borderBottom: `3px solid ${AC}`, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
-                <div>
-                  <h2 style={{ margin: 0, fontFamily: "Playfair Display, serif", fontSize: "1.2rem" }}>VIVANA COIR</h2>
-                  <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>PRODUCTS EXPORT (PVT) LTD</p>
-                  <p style={{ margin: "2px 0 0", fontSize: "0.7rem", color: "#93c5fd" }}>{SHOP_CONFIG.address}</p>
+              <div style={{
+                background: "#fff",
+                color: P, padding: "1.5rem 2rem",
+                borderBottom: `3px solid ${AC}`,
+                display: "flex", justifyContent: "space-between",
+                flexDirection: "row", flexWrap: "wrap", gap: "1rem"
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flex: "1 1 300px" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logo.png"
+                    alt="VIVANA HOLDINGS"
+                    style={{ height: "48px", width: "auto" }}
+                  />
+                  <div>
+                    <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em", color: P }}>VIVANA HOLDINGS</h2>
+                    <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#475569" }}>PRODUCTS EXPORT (PVT) LTD</p>
+                    <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#475569" }}>{SHOP_CONFIG.address}</p>
+                    <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#475569" }}>{SHOP_CONFIG.email}</p>
+                  </div>
                 </div>
-                <div style={{ textAlign: "right" }}>
-                  <p style={{ margin: 0, fontSize: "0.7rem", color: "#93c5fd", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 700 }}>INVOICE</p>
-                  <p style={{ margin: "4px 0 0", fontSize: "0.82rem" }}><strong>Code:</strong> {selectedOrder.invoiceCode ? formatInvoiceCode(selectedOrder.invoiceCode) : selectedOrder.orderId}</p>
-                  <p style={{ margin: "2px 0 0", fontSize: "0.82rem" }}><strong>Ref:</strong> {selectedOrder.orderId}</p>
-                  <p style={{ margin: "2px 0 0", fontSize: "0.82rem" }}><strong>Date:</strong> {String(selectedOrder.createdAt || "").split(",")[0]}</p>
+                <div style={{ textAlign: "right", flex: "1 1 200px" }}>
+                  <p style={{ margin: 0, fontSize: "0.75rem", color: P, textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 700 }}>INVOICE</p>
+                  <p style={{ margin: "4px 0 0", fontSize: "0.82rem", color: "#111" }}><strong>Code:</strong> {selectedOrder.invoiceCode ? formatInvoiceCode(selectedOrder.invoiceCode) : selectedOrder.orderId}</p>
+                  <p style={{ margin: "2px 0 0", fontSize: "0.82rem", color: "#111" }}><strong>Ref:</strong> {selectedOrder.orderId}</p>
+                  <p style={{ margin: "2px 0 0", fontSize: "0.82rem", color: "#111" }}><strong>Date:</strong> {String(selectedOrder.createdAt || "").split(",")[0]}</p>
                 </div>
               </div>
 
