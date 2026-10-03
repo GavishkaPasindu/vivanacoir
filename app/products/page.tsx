@@ -51,7 +51,7 @@ export default function Products() {
                 <p className="product-desc">
                   The world's best coir fibre used as raw materials for geo textile, erosion control, packaging, and mattresses. We supply both premium mattress fibre and twisted fibre bales.
                 </p>
-                <Link href="#contact" className="product-link">
+                <Link href="/quote" className="product-link">
                   Request Quote <ArrowRight size={16} />
                 </Link>
               </div>
@@ -69,7 +69,7 @@ export default function Products() {
                 <p className="product-desc">
                   100% natural, eco-friendly growing medium and substrate blocks with excellent water retention properties, providing the best growing media product solutions to commercial growers worldwide.
                 </p>
-                <Link href="#contact" className="product-link">
+                <Link href="/quote" className="product-link">
                   Request Quote <ArrowRight size={16} />
                 </Link>
               </div>
@@ -87,7 +87,7 @@ export default function Products() {
                 <p className="product-desc">
                   Fine-grade husk powder perfectly suited for specialized agricultural needs, terrariums, and soil conditioning.
                 </p>
-                <Link href="#contact" className="product-link">
+                <Link href="/quote" className="product-link">
                   Request Quote <ArrowRight size={16} />
                 </Link>
               </div>
@@ -105,7 +105,7 @@ export default function Products() {
                 <p className="product-desc">
                   Exceptionally durable, natural fiber ropes and twines. Suitable for agricultural, marine, and commercial use.
                 </p>
-                <Link href="#contact" className="product-link">
+                <Link href="/quote" className="product-link">
                   Request Quote <ArrowRight size={16} />
                 </Link>
               </div>
@@ -123,7 +123,7 @@ export default function Products() {
                 <p className="product-desc">
                   Custom coir-based agricultural and industrial items, specifically tailored to meet your unique business requirements.
                 </p>
-                <Link href="#contact" className="product-link">
+                <Link href="/quote" className="product-link">
                   Request Quote <ArrowRight size={16} />
                 </Link>
               </div>
