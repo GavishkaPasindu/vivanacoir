@@ -7,7 +7,7 @@ import CartDrawer from "@/app/components/CartDrawer";
 import type { Product, ProductsApiResponse } from "@/app/lib/types";
 
 function driveImageUrl(fileId: string): string {
-  return `https://drive.google.com/uc?export=view&id=${fileId}`;
+  return `https://lh3.googleusercontent.com/d/${fileId}`;
 }
 
 // ─── Product Card ─────────────────────────────────────────────────────────────
@@ -57,7 +57,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.isWholesale && (
             <span className="shop-badge shop-badge-ws">WHOLESALE</span>
           )}
-          {product.discountPrice && product.discountPrice > 0 && !product.isWholesale && (
+          {product.discountPrice > 0 && !product.isWholesale && (
             <span className="shop-badge shop-badge-sale">SALE</span>
           )}
         </div>

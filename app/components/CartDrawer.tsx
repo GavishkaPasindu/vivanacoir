@@ -12,7 +12,7 @@ import {
 
 // Try lh3 first, fallback via uc export
 function driveImageUrl(fileId: string): string {
-  return fileId ? `https://drive.google.com/uc?export=view&id=${fileId}` : "";
+  return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : "";
 }
 
 interface FormData {

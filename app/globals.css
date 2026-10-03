@@ -878,3 +878,49 @@ img {
   .shop-result-count { margin-left: 0; }
 }
 
+/* ═══════════════════════════════════════════════════
+   PRINT STYLES FOR RECEIPT
+   ═══════════════════════════════════════════════════ */
+@media print {
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Hide navbar, footer, and other UI elements */
+  nav, footer, .shop-cart-fab, .btn-primary, button {
+    display: none !important;
+  }
+  
+  /* Reset layout wrappers to prevent extra pages */
+  main, .container, .section {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Make sure the receipt document fits on one page */
+  .printable-doc {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Adjust the wrapping container */
+  .printable-doc-wrapper {
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  /* Prevent page breaks within the table rows */
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

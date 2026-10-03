@@ -6,7 +6,7 @@ import { formatInvoiceCode } from "@/app/lib/invoiceCounter";
 import type { Product, ProductsApiResponse } from "@/app/lib/types";
 
 function driveImageUrl(fileId: string): string {
-  return fileId ? `https://drive.google.com/uc?export=view&id=${fileId}` : "";
+  return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : "";
 }
 
 interface OrderItem {

@@ -5,7 +5,7 @@ const SHEET_NAME = 'Sheet1';
 
 // Convert a Google Drive file ID to a directly-embeddable image URL
 export function driveImageUrl(fileId: string): string {
-  return `https://drive.google.com/uc?export=view&id=${fileId}`;
+  return `https://lh3.googleusercontent.com/d/${fileId}`;
 }
 
 // Extract Google Drive file ID from any Drive URL format

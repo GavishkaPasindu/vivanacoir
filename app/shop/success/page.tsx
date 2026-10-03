@@ -5,7 +5,7 @@ import { SHOP_CONFIG } from "@/app/lib/config";
 import { formatReceiptCode } from "@/app/lib/invoiceCounter";
 
 function driveImageUrl(fileId: string): string {
-  return fileId ? `https://drive.google.com/uc?export=view&id=${fileId}` : "";
+  return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : "";
 }
 
 interface OrderItem {
