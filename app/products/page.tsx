@@ -114,7 +114,7 @@ export default function Products() {
             {/* Product 5 */}
             <div className="product-card">
               <img 
-                src="https://images.unsplash.com/photo-1628187843815-373df1f04471?auto=format&fit=crop&q=80&w=600" 
+                src="/factory2.jpg" 
                 alt="Value-Added Products" 
                 className="product-image"
               />
