@@ -99,19 +99,28 @@ function SuccessContent() {
             display: "flex", justifyContent: "space-between",
             flexWrap: "wrap", gap: "1rem",
           }}>
-            <div>
-              <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em" }}>
-                VIVANA HOLDINGS
-              </h2>
-              <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#93c5fd" }}>
-                PRODUCTS EXPORT (PVT) LTD
-              </p>
-              <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>
-                {SHOP_CONFIG.address}
-              </p>
-              <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>
-                {SHOP_CONFIG.email}
-              </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              {/* Logo on invoice */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo.png"
+                alt="VIVANA HOLDINGS"
+                style={{ height: "52px", width: "auto", filter: "brightness(0) invert(1)" }}
+              />
+              <div>
+                <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em" }}>
+                  VIVANA HOLDINGS
+                </h2>
+                <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#93c5fd" }}>
+                  PRODUCTS EXPORT (PVT) LTD
+                </p>
+                <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>
+                  {SHOP_CONFIG.address}
+                </p>
+                <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#93c5fd" }}>
+                  {SHOP_CONFIG.email}
+                </p>
+              </div>
             </div>
             <div style={{ textAlign: "right" }}>
               <p style={{ margin: 0, fontSize: "0.75rem", color: "#93c5fd", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 700 }}>
