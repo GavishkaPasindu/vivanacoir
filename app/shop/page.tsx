@@ -57,7 +57,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.isWholesale && (
             <span className="shop-badge shop-badge-ws">WHOLESALE</span>
           )}
-          {product.discountPrice > 0 && !product.isWholesale && (
+          {(product.discountPrice ?? 0) > 0 && !product.isWholesale && (
             <span className="shop-badge shop-badge-sale">SALE</span>
           )}
         </div>
