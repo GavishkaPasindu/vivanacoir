@@ -55,8 +55,15 @@ const products = [
 // ── testimonials ──────────────────────────────────────────
 const testimonials = [
   { quote: "Vivana's coco peat is consistently excellent — right EC, right pH, reliable delivery. Our greenhouse operations depend on them.", name: "Jan Van der Berg", country: "Netherlands 🇳🇱", role: "Commercial Grower" },
-  { quote: "We've been importing Vivana coir fibre for 5 years. The quality is outstanding and the export documentation is always perfectly handled.", name: "Ahmed Al-Rashid", country: "UAE 🇦🇪", role: "Industrial Buyer" },
   { quote: "As a UK-based substrate supplier, finding a consistent source was hard. Vivana solved that completely. Highly recommended.", name: "Sarah Thompson", country: "United Kingdom 🇬🇧", role: "Substrate Supplier" },
+  { quote: "Vivana provides the best Coco Peat blocks for our nurseries across California. Outstanding quality.", name: "Michael Davies", country: "USA 🇺🇸", role: "Nursery Owner" },
+  { quote: "High quality coir ropes and excellent export documentation. Very satisfied with Vivana's fast shipping to Shanghai.", name: "Wei Chen", country: "China 🇨🇳", role: "Distributor" },
+  { quote: "Excellent quality husk powder for our agricultural needs. Their custom packaging options are a huge plus.", name: "Ji-hoon Park", country: "South Korea 🇰🇷", role: "Agricultural Importer" },
+  { quote: "We've been importing Vivana coir fibre for 5 years. The quality is outstanding and the export documentation is perfectly handled.", name: "Ahmed Al-Rashid", country: "UAE 🇦🇪", role: "Industrial Buyer" },
+  { quote: "Vivana's premium coco peat is perfect for our desert farming projects. A very reliable long-term partner.", name: "Faisal Al-Saud", country: "Saudi Arabia 🇸🇦", role: "Agribusiness Director" },
+  { quote: "Very reliable supplier of coir fibre. Good prices, great communication, and always on time.", name: "Mohammed Rahman", country: "Bangladesh 🇧🇩", role: "Manufacturing Partner" },
+  { quote: "Their strict quality control and ISO-compliant processes make them our top choice for coir products in Europe.", name: "Klaus Müller", country: "Germany 🇩🇪", role: "Import Manager" },
+  { quote: "Fantastic eco-friendly products. The 100% natural growing media from Vivana is highly sought after by our clients.", name: "Sophie Dubois", country: "France 🇫🇷", role: "Horticulture Retailer" }
 ];
 
 // ── process steps ─────────────────────────────────────────
@@ -91,8 +98,8 @@ export default function Home() {
             VIVANA COIR PRODUCTS EXPORT · SRI LANKA
           </div>
           <h1 className="hp-hero-title">
-            World-Class Coir &<br />
-            <span className="hp-hero-accent">Coco Peat</span> Exports
+            Premium Srilanka Coir<br />
+            <span className="hp-hero-accent">For a Greener World</span>
           </h1>
           <p className="hp-hero-desc">
             From Sri Lanka&apos;s legendary coconut triangle to commercial growers
@@ -167,17 +174,17 @@ export default function Home() {
               <span className="section-label">Our Story</span>
               <h2 className="section-title">Sri Lanka&apos;s Trusted Coir Export Partner</h2>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8, marginBottom: "1.25rem" }}>
-                <strong>VIVANA COIR PRODUCTS EXPORT (PVT) LTD</strong> is a leading manufacturer and exporter based in
-                Weheragalawaththa, Kahandawa, Ranna — the heart of Sri Lanka&apos;s famous coconut triangle.
+                <strong>VIVANA COIR PRODUCTS EXPORT</strong> is a leading manufacturer and exporter based in
+                Weheragalawaththa, Rekawa Road, Kahandawa Ranna — the heart of Sri Lanka&apos;s famous coconut triangle.
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8, marginBottom: "2rem" }}>
-                Under the visionary leadership of <strong>Mr. Rathnayaka G. A. Lakmal Sampath</strong>, we deliver
+                Under the visionary leadership of <strong>Mr. Rathnayaka Geegana Arachchige Lakmal Sampath</strong>, we deliver
                 premium, sustainably produced coir products to commercial growers, industrial buyers and distributors
                 across the globe.
               </p>
 
               <div className="hp-about-checklist">
-                {["ISO-compliant export processes", "Modern automated machinery", "Custom spec & private label", "Full export documentation support"].map(item => (
+                {["ISO-compliant export processes", "Modern automated machinery", "Custom spec & private label", "Full export documentation support", "Coconut Development Authority approval in Sri Lanka"].map(item => (
                   <div key={item} className="hp-about-check-item">
                     <CheckCircle2 size={18} style={{ color: "var(--color-accent)", flexShrink: 0 }} />
                     <span>{item}</span>

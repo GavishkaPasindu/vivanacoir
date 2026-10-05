@@ -112,7 +112,7 @@ function SuccessContent() {
                   VIVANA HOLDINGS
                 </h2>
                 <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
-                  PRODUCTS EXPORT (PVT) LTD
+                  PRODUCTS EXPORT
                 </p>
                 <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "var(--color-text-muted)" }}>
                   {SHOP_CONFIG.address}
@@ -164,7 +164,7 @@ function SuccessContent() {
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.4rem", fontSize: "0.82rem" }}>
                 <div><strong>Bank:</strong> People&apos;s Bank</div>
-                <div><strong>Account Name:</strong> VIVANA COIR PVT LTD</div>
+                <div><strong>Account Name:</strong> VIVANA COIR</div>
                 <div><strong>Account No:</strong> 000 1234 5678</div>
                 <div><strong>Branch:</strong> Hambantota</div>
               </div>

@@ -9,11 +9,11 @@ export const SHOP_CONFIG = {
 
   // Business Identity
   name: "VIVANA COIR",
-  fullName: "VIVANA COIR PRODUCTS EXPORT (PVT) LTD",
+  fullName: "VIVANA COIR PRODUCTS EXPORT",
   tagline: "Premium Coir Products from the Heart of Sri Lanka",
 
   // Contact and Address
-  address: "Weheragalawaththa, Kahandawa, Ranna, Hambantota District, Sri Lanka",
+  address: "Weheragalawaththa, Rekawa Road, Kahandawa Ranna 82125 . Hambantota District Sri Lanka",
   phone: "+94 76 252 0583",
   whatsapp: "+94762520583",
   email: "vivanacoir@gmail.com",

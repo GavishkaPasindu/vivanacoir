@@ -150,7 +150,7 @@ export default function AboutPage() {
                   marginBottom: "1.25rem",
                 }}
               >
-                <strong>VIVANA COIR PRODUCTS EXPORT (PVT) LTD</strong> is a
+                <strong>VIVANA COIR PRODUCTS EXPORT</strong> is a
                 leading manufacturer and exporter of premium coir-based products,
                 widely recognized across the global horticulture and industrial
                 sectors. Our factory is located in{" "}

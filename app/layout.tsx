@@ -90,7 +90,7 @@ export default function RootLayout({
             </div>
             
             <div className="footer-bottom">
-              <p>&copy; {new Date().getFullYear()} VIVANA COIR PRODUCTS EXPORT (PVT) LTD. All Rights Reserved.</p>
+              <p>&copy; {new Date().getFullYear()} VIVANA COIR PRODUCTS EXPORT. All Rights Reserved.</p>
             </div>
           </div>
         </footer>

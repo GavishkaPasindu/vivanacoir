@@ -200,7 +200,7 @@ export async function POST(req: NextRequest) {
                 <!-- Footer -->
                 <tr>
                   <td align="center" style="background-color: #1a5c2f; padding: 20px; font-size: 11px; color: #a5d6a7; border-top: 2px solid #4caf50;">
-                    <p style="margin: 0;">© 2026 VIVANA COIR PRODUCTS EXPORT (PVT) LTD. All rights reserved.</p>
+                    <p style="margin: 0;">© 2026 VIVANA COIR PRODUCTS EXPORT. All rights reserved.</p>
                     <p style="margin: 5px 0 0 0;">Weheragalawaththa, Kahandawa, Ranna, Hambantota District, Sri Lanka | Email: vivanacoir@gmail.com</p>
                   </td>
                 </tr>

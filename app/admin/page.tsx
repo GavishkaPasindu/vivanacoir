@@ -508,7 +508,7 @@ export default function AdminPage() {
                   />
                   <div>
                     <h2 style={{ margin: 0, fontFamily: "var(--font-heading)", fontSize: "1.2rem", letterSpacing: "0.04em", color: P }}>VIVANA HOLDINGS</h2>
-                    <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#475569" }}>PRODUCTS EXPORT (PVT) LTD</p>
+                    <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: "#475569" }}>PRODUCTS EXPORT</p>
                     <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#475569" }}>{SHOP_CONFIG.address}</p>
                     <p style={{ margin: "2px 0 0", fontSize: "0.72rem", color: "#475569" }}>{SHOP_CONFIG.email}</p>
                   </div>
