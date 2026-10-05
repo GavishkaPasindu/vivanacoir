@@ -40,7 +40,7 @@ export default function ContactPage() {
       {/* Hero Banner */}
       <div className="contact-hero">
         <div className="container">
-          <span className="section-label" style={{ color: "#93c5fd" }}>We&apos;d love to hear from you</span>
+          <span className="section-label" style={{ color: "#C4A882" }}>We&apos;d love to hear from you</span>
           <h1 className="contact-hero-title">Contact Us</h1>
           <p className="contact-hero-sub">
             Reach out for export inquiries, product questions, or partnership opportunities.

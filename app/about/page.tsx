@@ -85,7 +85,7 @@ export default function AboutPage() {
         }}
       >
         <div className="container">
-          <span className="section-label" style={{ color: "#93c5fd" }}>
+          <span className="section-label" style={{ color: "#C4A882" }}>
             Our Story
           </span>
           <h1
@@ -94,14 +94,29 @@ export default function AboutPage() {
               fontSize: "3rem",
               fontWeight: 700,
               color: "white",
-              margin: "0.5rem 0 1rem",
+              margin: "0.5rem 0 0.25rem",
+              textTransform: "uppercase",
             }}
           >
-            About Vivana Holdings
+            ABOUT VIVANA HOLDINGS
           </h1>
+          <h2
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontSize: "1.25rem",
+              fontWeight: 600,
+              color: "white",
+              opacity: 0.9,
+              margin: "0 0 1.5rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+            }}
+          >
+            VIVANA COIR PRODUCTS EXPORT
+          </h2>
           <p
             style={{
-              color: "#93c5fd",
+              color: "#C4A882",
               fontSize: "1.1rem",
               maxWidth: "620px",
               margin: "0 auto",
@@ -197,7 +212,7 @@ export default function AboutPage() {
             <div style={{ position: "relative" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/factory1.jpg"
+                src="/factory_img4.jpg"
                 alt="Vivana Holdings Factory"
                 style={{
                   width: "100%",
@@ -262,19 +277,77 @@ export default function AboutPage() {
             {/* Large left image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/factory2.jpg"
+              src="/factory_new2.jpg"
               alt="Coir processing machinery"
               className="factory-img factory-img-large"
             />
             {/* Right column: 3 smaller images */}
             <div className="factory-gallery-col">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/factory3.jpg" alt="Coconut husk soaking tanks" className="factory-img" />
+              <img src="/factory_new1.jpg" alt="Coconut husk soaking tanks" className="factory-img" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/factory4.jpg" alt="Raw coconut husks stockpile" className="factory-img" />
+              <img src="/factory_cocopeat.jpg" alt="Raw coconut husks stockpile" className="factory-img" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/about_factory.jpg" alt="Factory exterior" className="factory-img" />
+              <img src="/factory_img3.jpg" alt="Factory exterior" className="factory-img" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── OBJECTIVES ──────────────────────────────────── */}
+      <section className="section">
+        <div className="container">
+          <div className="text-center mb-8">
+            <span className="section-label">Our Purpose</span>
+            <h2 className="section-title">Corporate Objectives</h2>
+          </div>
+          
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            <ul style={{ 
+              listStyleType: "none", 
+              padding: 0, 
+              display: "flex", 
+              flexDirection: "column", 
+              gap: "1.25rem" 
+            }}>
+              {[
+                "To manufacture, process, produce, purchase, sell, distribute, import and export coconut, coconut-based and coconut husk products, including desiccated coconut, coco peat, coir pith, coir fibre, coir ropes, coconut shell products and other coconut products.",
+                "To manufacture, process, package, purchase, sell, distribute, import and export Ceylon cinnamon and cinnamon-based products, including cinnamon quills, cut quills, quakings, feathers, powder, extracts and essential oils.",
+                "To manufacture, process, package, purchase, sell, distribute, import and export spices and spice-based products, including pepper, cloves, cardamom, nutmeg, mace, turmeric, ginger, chilli, coriander, cumin, fennel and other spices.",
+                "To produce, process, extract, manufacture, package, import and export essential oils, oleoresins, herbal products, extracts and other value-added products derived from coconut, cinnamon, spices and other agricultural products.",
+                "To manufacture, process, blend, grind, package, brand, market, import, export and trade food, agricultural, organic, natural and horticultural products and value-added products.",
+                "To source, purchase, collect, process, import, export and supply agricultural, coconut, spice and natural raw materials from local and overseas farmers, growers, estates, producers and suppliers.",
+                "To engage in the import, export, wholesale, retail, distribution, trading, marketing and supply of coconut products, coconut-based products, coconut husk products, spices, cinnamon, food, agricultural and other natural products in local and international markets.",
+                "To establish, operate and maintain manufacturing, processing, storage, packaging and distribution facilities and to undertake all activities incidental or conducive to the above objectives, including quality assurance, product development, certification and compliance with applicable regulatory requirements."
+              ].map((objective, i) => (
+                <li key={i} style={{ 
+                  display: "flex", 
+                  alignItems: "flex-start", 
+                  gap: "1rem", 
+                  background: "var(--color-bg-alt)", 
+                  padding: "1.25rem", 
+                  borderRadius: "8px",
+                  borderLeft: "4px solid var(--color-accent)"
+                }}>
+                  <span style={{ 
+                    color: "var(--color-accent)", 
+                    fontWeight: 700, 
+                    fontSize: "1.1rem", 
+                    minWidth: "24px" 
+                  }}>
+                    {i + 1}.
+                  </span>
+                  <p style={{ 
+                    color: "var(--color-text)", 
+                    margin: 0, 
+                    lineHeight: 1.6,
+                    fontSize: "0.95rem"
+                  }}>
+                    {objective}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -288,8 +361,9 @@ export default function AboutPage() {
           </div>
 
           <div className="leadership-card">
-            <div className="leadership-avatar">
-              <div className="leadership-avatar-placeholder">RLS</div>
+            <div className="leadership-avatar" style={{ overflow: 'hidden' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/owner.png" alt="Mr. Rathnayaka Geegana Arachchige Lakmal Sampath" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
             </div>
             <div>
               <h3
@@ -323,9 +397,10 @@ export default function AboutPage() {
                 }}
               >
                 With over a decade of hands-on experience in Sri Lanka&apos;s coir
-                industry, Mr. Sampath founded Vivana Holdings with a clear vision:
-                to bring world-class, sustainably produced coir products to the
-                global market. His deep understanding of both the manufacturing
+                industry, Mr. Sampath founded <strong>VIVANA HOLDINGS PVT LTD</strong>, 
+                the parent company under which <strong>VIVANA COIR PRODUCTS EXPORT</strong> 
+                operates. His clear vision is to bring world-class, sustainably produced 
+                coir products to the global market. His deep understanding of both the manufacturing
                 process and international buyer requirements has been the driving
                 force behind the company&apos;s rapid growth and strong reputation.
               </p>
@@ -434,7 +509,7 @@ export default function AboutPage() {
           >
             Ready to start your export journey?
           </h2>
-          <p style={{ color: "#93c5fd", marginBottom: "2rem", fontSize: "1.05rem" }}>
+          <p style={{ color: "#C4A882", marginBottom: "2rem", fontSize: "1.05rem" }}>
             Get in touch today for competitive pricing and tailored coir solutions.
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>

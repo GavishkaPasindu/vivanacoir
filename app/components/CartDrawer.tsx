@@ -198,7 +198,7 @@ export default function CartDrawer() {
             <h2 style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--font-body)" }}>
               Your Cart
             </h2>
-            <p style={{ margin: "2px 0 0", fontSize: "0.75rem", color: "#93c5fd" }}>
+            <p style={{ margin: "2px 0 0", fontSize: "0.75rem", color: "#C4A882" }}>
               {cartCount} {cartCount === 1 ? "item" : "items"}
             </p>
           </div>

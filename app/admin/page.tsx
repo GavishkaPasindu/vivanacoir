@@ -240,12 +240,12 @@ export default function AdminPage() {
             <p style={{ margin: 0, fontWeight: 800, fontSize: "0.95rem", letterSpacing: "0.04em", fontFamily: "Playfair Display, serif" }}>
               VIVANA HOLDINGS
             </p>
-            <p style={{ margin: 0, fontSize: "0.68rem", color: "#93c5fd" }}>Admin Dashboard</p>
+            <p style={{ margin: 0, fontSize: "0.68rem", color: "#C4A882" }}>Admin Dashboard</p>
           </div>
         </div>
         <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-          <a href="/" style={{ color: "#93c5fd", textDecoration: "none", fontSize: "0.82rem" }}>← Main Site</a>
-          <a href="/shop" style={{ color: "#93c5fd", textDecoration: "none", fontSize: "0.82rem" }}>Shop</a>
+          <a href="/" style={{ color: "#C4A882", textDecoration: "none", fontSize: "0.82rem" }}>← Main Site</a>
+          <a href="/shop" style={{ color: "#C4A882", textDecoration: "none", fontSize: "0.82rem" }}>Shop</a>
           <button
             onClick={() => setIsAuthenticated(false)}
             style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.25)", color: "#fff", padding: "0.35rem 0.875rem", cursor: "pointer", fontSize: "0.82rem" }}
@@ -623,7 +623,7 @@ export default function AdminPage() {
             <div id="printable-label" className="printable-doc">
               <div style={{ background: P, color: "#fff", padding: "1rem 1.5rem", borderBottom: `3px solid ${AC}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontWeight: 800, fontSize: "1rem", letterSpacing: "0.04em", fontFamily: "Playfair Display, serif" }}>{SHOP_CONFIG.name}</span>
-                <span style={{ fontSize: "0.68rem", color: "#93c5fd", textTransform: "uppercase", letterSpacing: "0.08em" }}>DOMESTIC COURIER</span>
+                <span style={{ fontSize: "0.68rem", color: "#C4A882", textTransform: "uppercase", letterSpacing: "0.08em" }}>DOMESTIC COURIER</span>
               </div>
 
               <div style={{ padding: "1.5rem" }}>
@@ -643,7 +643,7 @@ export default function AdminPage() {
 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginTop: "1rem" }}>
                   <div style={{ padding: "0.875rem", background: P, color: "#fff", textAlign: "center" }}>
-                    <p style={{ margin: "0 0 0.2rem", fontSize: "0.62rem", color: "#93c5fd", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                    <p style={{ margin: "0 0 0.2rem", fontSize: "0.62rem", color: "#C4A882", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                       {(selectedOrder.paymentMethod || "").includes("COD") ? "COD AMOUNT" : "PREPAID"}
                     </p>
                     <p style={{ margin: 0, fontWeight: 800, fontSize: "1.1rem" }}>

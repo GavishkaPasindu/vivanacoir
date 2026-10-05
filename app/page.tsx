@@ -50,6 +50,7 @@ const products = [
   { img: "/product_fibre.jpg", name: "Coir Fibre", tag: "Premium", desc: "World-class mattress fibre & twisted bales for geo-textile, erosion control and packaging.", link: "/products" },
   { img: "/product_powder.jpg", name: "Coconut Husk Powder", tag: "Eco-Grade", desc: "Fine-grade powder for agricultural, terrarium and soil conditioning applications.", link: "/products" },
   { img: "/product_ropes.jpg", name: "Coir Ropes & Twines", tag: "Industrial", desc: "Exceptionally durable natural fibre ropes for agricultural, marine and commercial use.", link: "/products" },
+  { img: "/product_geotextile.jpg", name: "Geo Textile Mesh", tag: "Eco-Grade", desc: "100% biodegradable coir geo textile mesh for slope stabilisation, erosion control and land reclamation.", link: "/products" },
 ];
 
 // ── testimonials ──────────────────────────────────────────
@@ -155,11 +156,12 @@ export default function Home() {
       <section className="hp-about section" id="about">
         <div className="container">
           <div className="hp-about-grid">
-            {/* Image mosaic */}
-            <div className="hp-about-images">
-              <img src="/factory2.jpg" alt="Factory machinery" className="hp-about-img-main" />
-              <img src="/factory3.jpg" alt="Soaking tanks" className="hp-about-img-sm hp-about-img-sm-1" />
-              <img src="/factory4.jpg" alt="Raw coconuts" className="hp-about-img-sm hp-about-img-sm-2" />
+            {/* Image mosaic — 2×2 grid */}
+            <div className="hp-about-images hp-about-images-4">
+              <img src="/factory_new2.jpg" alt="Factory workers processing coir" className="hp-about-4-img" />
+              <img src="/factory3.jpg" alt="Soaking tanks" className="hp-about-4-img" />
+              <img src="/factory_img4.jpg" alt="Coco peat drying yard" className="hp-about-4-img" />
+              <img src="/factory4.jpg" alt="Raw coconuts" className="hp-about-4-img" />
               <div className="hp-about-badge-float">
                 <Globe size={20} />
                 <div>

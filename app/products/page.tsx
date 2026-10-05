@@ -111,17 +111,17 @@ export default function Products() {
               </div>
             </div>
 
-            {/* Product 5 */}
+            {/* Product 5 — Geo Textile Mesh */}
             <div className="product-card">
               <img 
-                src="/factory2.jpg" 
-                alt="Value-Added Products" 
+                src="/product_geotextile.jpg" 
+                alt="Coir Geo Textile Mesh" 
                 className="product-image"
               />
               <div className="product-content">
-                <h3 className="product-title">Value-Added Products</h3>
+                <h3 className="product-title">Geo Textile Mesh</h3>
                 <p className="product-desc">
-                  Custom coir-based agricultural and industrial items, specifically tailored to meet your unique business requirements.
+                  100% natural and biodegradable coir geo textile mesh woven from coir yarn. Used for slope stabilisation, erosion control, land reclamation and revegetation projects worldwide. Available in various mesh sizes and roll widths to suit civil engineering specifications.
                 </p>
                 <Link href="/quote" className="product-link">
                   Request Quote <ArrowRight size={16} />
